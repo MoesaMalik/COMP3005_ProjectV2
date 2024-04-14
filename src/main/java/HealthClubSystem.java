@@ -175,7 +175,7 @@ public class HealthClubSystem {
     private static void updateMemberProfile() {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter your member ID: ");
-        int memberId = Integer.parseInt(scanner.nextLine());  // Ensure proper error handling in real applications
+        int memberId = Integer.parseInt(scanner.nextLine());  
         System.out.print("Update fitness goals: ");
         String fitnessGoals = scanner.nextLine();
         System.out.print("Update health metrics: ");
@@ -204,7 +204,7 @@ public class HealthClubSystem {
         System.out.print("Enter your member ID to view dashboard: ");
         int memberId = Integer.parseInt(scanner.nextLine());
 
-        // Fetching general information
+       
         try (PreparedStatement pstmt = connection.prepareStatement(
                 "SELECT * FROM Members WHERE member_id = ?")) {
             pstmt.setInt(1, memberId);
@@ -225,7 +225,7 @@ public class HealthClubSystem {
             e.printStackTrace();
         }
 
-        // Fetching session data
+        
         try (PreparedStatement pstmt = connection.prepareStatement(
                 "SELECT session_type, room_id, session_time, status FROM Sessions WHERE member_id = ? ORDER BY session_time DESC")) {
             pstmt.setInt(1, memberId);
